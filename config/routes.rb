@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  post 'programming/write_memory'
+  post 'programming/write_keys'
+  root 'programming#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

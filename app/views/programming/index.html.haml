@@ -1,0 +1,132 @@
+.row.title-div
+  .col-md-12
+    %h1= "AVR Memory Programmer"
+
+.row.form
+  .col-md-12
+    = form_tag programming_write_memory_path, method:'post', multipart:true, class: 'form-inline' do
+      .setup
+        .row.configurate_programmer_title
+          .col-md-12
+            %h3= "Configurate Programmer"
+        .row.configurate_programmer
+          .col-md-3
+            = label_tag :programmer, 'Programmer'
+            = select_tag :programmer, options_for_select(@programmers, @default_programmer), class: 'selectpicker form-control'
+          .col-md-3
+            = label_tag :partno, 'PartNumber'
+            = select_tag :partno, options_for_select(@partnos, @default_partno), class: 'selectpicker form-control'
+          .col-md-6
+            = label_tag :conf_file, 'conf-File'
+            = file_field_tag :conf_file, class: 'form-control'
+        
+        .row.setup_port_title
+          .col-md-12
+            %h3= "Setup Port"
+        .row.setup_port
+          .col-md-3
+            = label_tag :baudrate, 'Baudrate'
+            = select_tag :baudrate, options_for_select(@baudrates, @default_baudrate), class: 'selectpicker form-control'
+          .col-md-9
+            = label_tag :port, 'Port'
+            = select_tag :port, options_for_select(@ports), class: 'selectpicker form-control'
+
+      .write_memory
+        .row
+          .col-md-4
+            .row.write_flash_title
+              .col-md-12
+                %h3= "Write Flash"
+            .row.write_flash
+              .col-md-12
+                = label_tag :hex_file, 'hex-File'
+                = file_field_tag :hex_file, class: 'form-control'
+
+            .row.write_eeprom_title
+              .col-md-12
+                %h3= "Write EEPROM"
+            .row.write_eeprom
+              .col-md-12
+                = label_tag :eep_file, 'eep-File'
+                = file_field_tag :eep_file, class: 'form-control'
+
+          .col-md-4
+            .row.write_ext_fuses_title
+              .col-md-12
+                %h3= "Write Ext. Fuses"
+            .row.write_lock_fuse
+              .col-md-3
+                = label_tag :lock_fuse, 'lock-Fuse'
+              .col-md-9
+                0x
+                = text_field_tag :lock_fuse, nil, class: 'form-control'
+            .row.write_ext_fuse
+              .col-md-3
+                = label_tag :ext_fuse, 'ext-Fuse'
+              .col-md-9
+                0x
+                = text_field_tag :ext_fuse, nil, class: 'form-control'
+
+          .col-md-4
+            .row.write_fuses_title
+              .col-md-12
+                %h3= "Write Fuses"
+            .row.write_high_fuse
+              .col-md-3
+                = label_tag :high_fuse, 'high-Fuse'
+              .col-md-9
+                0x
+                = text_field_tag :high_fuse, nil, class: 'form-control'
+            .row.write_low_fuse
+              .col-md-3
+                = label_tag :low_fuse, 'low-Fuse'
+              .col-md-9
+                0x
+                = text_field_tag :low_fuse, nil, class: 'form-control'
+        .row
+          .col-md-12
+            = submit_tag 'Write Memory', name:nil, class: 'form-control btn btn-default', style: 'width: inherit'
+
+
+.row.title-div
+  .col-md-12
+    %h1= "LoRaWAN Keys Programmer"
+
+.row.form
+  .col-md-12
+    = form_tag programming_write_keys_path, method:'post', multipart:true, class: 'form-inline' do
+      .write_keys
+        .row.abp_title
+          .col-md-12
+            %h3= "ABP"
+        .row.abp
+          .col-md-3
+            = label_tag :dev_eui, 'DevEUI'
+            = text_field_tag :dev_eui, params[:dev_eui], class: 'form-control'
+          .col-md-3
+            = label_tag :dev_adr, 'DevAdr'
+            = text_field_tag :dev_adr, params[:dev_adr], class: 'form-control'
+          .col-md-3
+            = label_tag :ntw_s_key, 'NtwSKey'
+            = text_field_tag :ntw_s_key, params[:ntw_s_key], class: 'form-control'
+          .col-md-3
+            = label_tag :app_s_key, 'AppSKey'
+            = text_field_tag :app_s_key, params[:app_s_key], class: 'form-control'
+
+        .row.otaa_title
+          .col-md-12
+            %h3= "OTAA"
+        .row.otaa
+          .col-md-3
+            = label_tag :dev_eui, 'DevEUI'
+            = text_field_tag :dev_eui, params[:dev_eui], class: 'form-control'
+          .col-md-3
+            = label_tag :app_eui, 'AppEUI'
+            = text_field_tag :app_eui, params[:app_eui], class: 'form-control'
+          .col-md-3
+            = label_tag :app_key, 'AppKey'
+            = text_field_tag :app_key, params[:app_key], class: 'form-control'
+
+        .row
+          .col-md-12
+            = submit_tag 'Write Keys', name:nil, class: 'form-control btn btn-default', style: 'width: inherit'

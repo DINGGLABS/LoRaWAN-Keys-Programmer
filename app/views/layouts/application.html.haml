@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title LoRaWAN-Keys-Programmer
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    .wrapper.fixed-width
+      .row.header
+
+      -# flash notifications and alerts
+      .row.flashes
+        .col-md-12.fixed-width
+          = render '/layouts/flashes'
+
+      -# main content (index.html)
+      .container.content-wrapper
+        .row.content
+          .col-md-12
+            = yield

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Ruby version
+ruby "2.3.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -35,6 +37,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry'
 end
 
 group :development do
@@ -45,3 +48,19 @@ group :development do
   gem 'spring'
 end
 
+# Added gems:
+
+#https://github.com/twbs/bootstrap-sass
+gem 'bootstrap-sass', '~> 3.3.5'
+
+# See https://github.com/kossnocorp/jquery.turbolinks
+gem 'jquery-turbolinks'
+
+# See http://haml.info
+gem 'haml-rails'
+
+# See https://github.com/golive/dev-wiki/wiki/Ruby-spreadsheet-documentation
+gem 'spreadsheet' # .xls
+
+# See https://devcenter.heroku.com/articles/getting-started-with-rails4#visit-your-application
+gem 'rails_12factor', group: :production
