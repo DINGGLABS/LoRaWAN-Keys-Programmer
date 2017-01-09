@@ -19,6 +19,9 @@
           .col-md-6
             = label_tag :conf_file, 'conf-File'
             = file_field_tag :conf_file, class: 'form-control'
+            - if session[:has_conf_file]  #blup
+              %br
+              = link_to 'File schon hochgeladen', '/conf_file.conf' #blup
         
         .row.setup_port_title
           .col-md-12

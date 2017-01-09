@@ -15,6 +15,7 @@ class ProgrammingController < ApplicationController
 
     if params[:conf_file].present?
       command = "avrdude -v -V -C #{params[:conf_file].tempfile.path} -c #{params[:programmer]} -p #{params[:partno]} -P #{params[:port]} -b #{params[:baudrate]}"
+      write_file_with_flag(:conf_file)  #blup
 
       # write flash
       if params[:hex_file].present?
@@ -57,7 +58,17 @@ class ProgrammingController < ApplicationController
       puts 'error: conf-File is missing!'
     end
 
-    render :index
+    flash[:notice] = 'blup'  #blup
+
+    redirect_to '/'
+  end
+
+ #blup
+  def write_file_with_flag(key)
+    File.open(Rails.root + 'public' + "#{key}.conf", 'w') do |file|
+      file.write File.read(params[key.to_sym].tempfile.path)
+    end
+    session["has_#{key}".to_sym] = true
   end
 
   # POST /write_keys
